@@ -1,6 +1,7 @@
 package com.gucarsoft.kesingez.controller;
 
-import com.gucarsoft.kesingez.model.user.post.AddressDTO;
+import com.gucarsoft.kesingez.model.user.post.address.AddressDTO;
+import com.gucarsoft.kesingez.model.user.post.address.REGION;
 import com.gucarsoft.kesingez.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,18 @@ public class AddressController extends BaseController{
     public ResponseEntity getByID(@PathVariable Long id) {
         return addressService.getAddressByID(id);
     }
+
+    @GetMapping("/plate/{plate}")
+    public ResponseEntity getByPlate(@PathVariable int plate) {
+        return addressService.getByPlate(plate);
+    }
+
+    @GetMapping("/region/{region}")
+    public ResponseEntity getByPlate(@PathVariable REGION region) {
+        return addressService.getByRegion(region);
+    }
+
+
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping

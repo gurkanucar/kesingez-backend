@@ -1,6 +1,7 @@
 package com.gucarsoft.kesingez.service;
 
-import com.gucarsoft.kesingez.model.user.post.AddressDTO;
+import com.gucarsoft.kesingez.model.user.post.address.AddressDTO;
+import com.gucarsoft.kesingez.model.user.post.address.REGION;
 import com.gucarsoft.kesingez.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,17 @@ public class AddressService extends BaseService {
     }
 
     public ResponseEntity getAddressByID(Long id) {
-
         return new ResponseEntity<>(repository.findById(id),HttpStatus.OK);
     }
+
+    public ResponseEntity getByPlate(int plate) {
+        return new ResponseEntity<>(repository.findAllByPlate(plate),HttpStatus.OK);
+    }
+
+    public ResponseEntity getByRegion(REGION region) {
+        return new ResponseEntity<>(repository.findAllByRegion(region.toString()),HttpStatus.OK);
+    }
+
 
     public ResponseEntity createAddress(AddressDTO entity) {
         return new ResponseEntity<>(repository.save(entity), HttpStatus.OK);
@@ -32,6 +41,7 @@ public class AddressService extends BaseService {
         addressDto.setCityName(entity.getCityName());
         addressDto.setDistrictName(entity.getDistrictName());
         addressDto.setPlate(entity.getPlate());
+        addressDto.setRegion(entity.getRegion());
         return new ResponseEntity<>(repository.save(entity), HttpStatus.OK);
     }
 

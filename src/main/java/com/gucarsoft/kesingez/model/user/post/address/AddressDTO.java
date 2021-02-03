@@ -1,4 +1,4 @@
-package com.gucarsoft.kesingez.model.user.post;
+package com.gucarsoft.kesingez.model.user.post.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gucarsoft.kesingez.model.BaseEntity;
@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 public class AddressDTO extends BaseEntity {
 
     private String countryName;
+    private String region;
     private String cityName;
     private String districtName;
     private int plate;

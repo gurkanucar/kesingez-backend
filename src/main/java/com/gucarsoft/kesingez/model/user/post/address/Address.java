@@ -1,4 +1,4 @@
-package com.gucarsoft.kesingez.model.user.post;
+package com.gucarsoft.kesingez.model.user.post.address;
 
 import com.gucarsoft.kesingez.model.BaseEntity;
 import lombok.Data;
