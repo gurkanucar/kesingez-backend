@@ -18,7 +18,5 @@ public class Address extends BaseEntity {
     private double latitude;
     private double longitude;
 
-    private String street;
-
 
 }

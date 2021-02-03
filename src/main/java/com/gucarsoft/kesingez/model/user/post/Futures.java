@@ -1,4 +1,12 @@
 package com.gucarsoft.kesingez.model.user.post;
 
-public class Futures {
+import com.gucarsoft.kesingez.model.BaseEntity;
+import lombok.Data;
+
+import javax.persistence.Entity;
+
+@Data
+@Entity
+public class Futures extends BaseEntity {
+    private String name;
 }

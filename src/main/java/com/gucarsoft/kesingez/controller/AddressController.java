@@ -1,7 +1,7 @@
 package com.gucarsoft.kesingez.controller;
 
 import com.gucarsoft.kesingez.model.user.post.address.AddressDTO;
-import com.gucarsoft.kesingez.model.user.post.address.REGION;
+import com.gucarsoft.kesingez.model.user.post.address.Region;
 import com.gucarsoft.kesingez.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +31,7 @@ public class AddressController extends BaseController{
     }
 
     @GetMapping("/region/{region}")
-    public ResponseEntity getByPlate(@PathVariable REGION region) {
+    public ResponseEntity getByPlate(@PathVariable Region region) {
         return addressService.getByRegion(region);
     }
 

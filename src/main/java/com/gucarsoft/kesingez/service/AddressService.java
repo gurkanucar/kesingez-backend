@@ -1,7 +1,7 @@
 package com.gucarsoft.kesingez.service;
 
 import com.gucarsoft.kesingez.model.user.post.address.AddressDTO;
-import com.gucarsoft.kesingez.model.user.post.address.REGION;
+import com.gucarsoft.kesingez.model.user.post.address.Region;
 import com.gucarsoft.kesingez.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ public class AddressService extends BaseService {
         return new ResponseEntity<>(repository.findAllByPlate(plate),HttpStatus.OK);
     }
 
-    public ResponseEntity getByRegion(REGION region) {
+    public ResponseEntity getByRegion(Region region) {
         return new ResponseEntity<>(repository.findAllByRegion(region.toString()),HttpStatus.OK);
     }
 

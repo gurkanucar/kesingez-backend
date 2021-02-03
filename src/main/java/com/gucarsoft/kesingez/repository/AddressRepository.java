@@ -1,7 +1,6 @@
 package com.gucarsoft.kesingez.repository;
 
 import com.gucarsoft.kesingez.model.user.post.address.AddressDTO;
-import com.gucarsoft.kesingez.model.user.post.address.REGION;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
