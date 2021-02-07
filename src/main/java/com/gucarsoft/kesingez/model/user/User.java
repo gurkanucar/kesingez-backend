@@ -3,6 +3,7 @@ package com.gucarsoft.kesingez.model.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gucarsoft.kesingez.model.BaseEntity;
+import com.gucarsoft.kesingez.model.Image;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -47,7 +48,7 @@ public class User extends BaseEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
+    private String profilePhotoUrl;
 
     public void setPassword(String password) {
         this.password = new BCryptPasswordEncoder().encode(password);

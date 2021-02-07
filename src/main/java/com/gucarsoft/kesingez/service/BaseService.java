@@ -2,6 +2,9 @@ package com.gucarsoft.kesingez.service;
 
 
 import com.gucarsoft.kesingez.model.BaseEntity;
+import com.gucarsoft.kesingez.model.user.User;
+import com.gucarsoft.kesingez.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,10 +12,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 public class BaseService {
 
+    @Autowired
+    UserRepository userRepo;
 
 //    @Value("${mailServiceUrl}")
 //    String mailServiceUrl;
 
+
+    User getUser(){return userRepo.findByUsername(getAuthUserName());}
 
     protected String getAuthUserName() {
         return SecurityContextHolder.getContext().getAuthentication().getName();

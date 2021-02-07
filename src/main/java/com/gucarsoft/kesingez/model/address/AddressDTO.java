@@ -1,4 +1,4 @@
-package com.gucarsoft.kesingez.model.user.post.address;
+package com.gucarsoft.kesingez.model.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gucarsoft.kesingez.model.BaseEntity;

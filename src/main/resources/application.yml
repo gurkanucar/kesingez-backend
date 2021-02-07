@@ -16,8 +16,11 @@ server:
 file:
   upload-dir: /app/uploads
 
-spring:
 
+
+spring:
+  jackson:
+    default-property-inclusion: non_null
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost/hizli?useUnicode=true&characterEncoding=UTF-8&verifyServerCertificate=false&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
@@ -30,8 +33,7 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-  jackson:
-    default-property-inclusion: non_null
+
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
   jmx:

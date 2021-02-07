@@ -1,7 +1,7 @@
 package com.gucarsoft.kesingez.controller;
 
-import com.gucarsoft.kesingez.model.user.post.address.AddressDTO;
-import com.gucarsoft.kesingez.model.user.post.address.Region;
+import com.gucarsoft.kesingez.model.address.AddressDTO;
+import com.gucarsoft.kesingez.model.address.Region;
 import com.gucarsoft.kesingez.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
