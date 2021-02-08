@@ -133,7 +133,7 @@ public class UserService extends BaseService {
         // assign user role
         entity.setRole(Role.USER);
         entity.setEmail(user.getEmail());
-        entity.setUsername(user.getEmail());
+        entity.setUsername(user.getUsername());
         entity.setName(user.getName());
         entity.setSurname(user.getSurname());
         entity.setPassword(user.getPassword());
