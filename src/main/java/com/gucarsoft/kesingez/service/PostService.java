@@ -40,31 +40,8 @@ public class PostService extends BaseService {
         for (Post post : postList
         ) {
             if (post.isShow()) {
-                PostDTO postDTO = new PostDTO();
                 if (post.getUser() != null) {
-                    postDTO.setUserID(post.getUser().getId());
-                    if (post.getUser().getUsername() != null)
-                        postDTO.setUserName(post.getUser().getUsername());
-                    if (post.getUser().getName() != null)
-                        postDTO.setName(post.getUser().getName());
-                    if (post.getDetail() != null)
-                        postDTO.setDetail(post.getDetail());
-                    if (post.getFuturesList() != null)
-                        postDTO.setFuturesList(post.getFuturesList());
-                    if (post.getCategoryList() != null)
-                        postDTO.setCategoryList(post.getCategoryList());
-                    if (post.getImageList() != null)
-                        postDTO.setImageList(post.getImageList());
-                    if (post.getReportCount() != null)
-                        postDTO.setReportCount(post.getReportCount());
-                    if (post.getAddress() != null)
-                        postDTO.setAddress(post.getAddress());
-                    if (post.getLikeCount() != null)
-                        postDTO.setLikeCount(post.getLikeCount());
-                    postDTOS.add(postDTO);
-//                    for(int k=0;k<1500;k++){
-//                        postDTOS.add(postDTO);
-//                    }
+                    postDTOS.add(convertPostToDTO(post));
                 }
             }
         }
@@ -78,28 +55,8 @@ public class PostService extends BaseService {
         for (Post post : postList
         ) {
             if (post.isShow()) {
-                PostDTO postDTO = new PostDTO();
                 if (post.getUser() != null && post.getUser().equals(getUser())) {
-                    postDTO.setUserID(post.getUser().getId());
-                    if (post.getUser().getUsername() != null)
-                        postDTO.setUserName(post.getUser().getUsername());
-                    if (post.getUser().getName() != null)
-                        postDTO.setName(post.getUser().getName());
-                    if (post.getDetail() != null)
-                        postDTO.setDetail(post.getDetail());
-                    if (post.getFuturesList() != null)
-                        postDTO.setFuturesList(post.getFuturesList());
-                    if (post.getCategoryList() != null)
-                        postDTO.setCategoryList(post.getCategoryList());
-                    if (post.getImageList() != null)
-                        postDTO.setImageList(post.getImageList());
-                    if (post.getReportCount() != null)
-                        postDTO.setReportCount(post.getReportCount());
-                    if (post.getAddress() != null)
-                        postDTO.setAddress(post.getAddress());
-                    if (post.getLikeCount() != null)
-                        postDTO.setLikeCount(post.getLikeCount());
-                    postDTOS.add(postDTO);
+                    postDTOS.add(convertPostToDTO(post));
                 }
             }
         }
@@ -108,34 +65,15 @@ public class PostService extends BaseService {
 
     public ResponseEntity getpostByID(Long id) {
         Post post = repository.findById(id).get();
-       PostDTO postDTO = new PostDTO();
-            if (post.isShow()) {
-                if (post.getUser() != null && post.getUser().equals(getUser())) {
-                    postDTO.setUserID(post.getUser().getId());
-                    if (post.getUser().getUsername() != null)
-                        postDTO.setUserName(post.getUser().getUsername());
-                    if (post.getUser().getName() != null)
-                        postDTO.setName(post.getUser().getName());
-                    if (post.getDetail() != null)
-                        postDTO.setDetail(post.getDetail());
-                    if (post.getFuturesList() != null)
-                        postDTO.setFuturesList(post.getFuturesList());
-                    if (post.getCategoryList() != null)
-                        postDTO.setCategoryList(post.getCategoryList());
-                    if (post.getImageList() != null)
-                        postDTO.setImageList(post.getImageList());
-                    if (post.getReportCount() != null)
-                        postDTO.setReportCount(post.getReportCount());
-                    if (post.getAddress() != null)
-                        postDTO.setAddress(post.getAddress());
-                    if (post.getLikeCount() != null)
-                        postDTO.setLikeCount(post.getLikeCount());
-                }
-
-        }
-            else {
-                postDTO=null;
+        PostDTO postDTO = new PostDTO();
+        if (post.isShow()) {
+            if (post.getUser() != null && post.getUser().equals(getUser())) {
+                postDTO = convertPostToDTO(post);
             }
+
+        } else {
+            postDTO = null;
+        }
         return new ResponseEntity<>(postDTO, HttpStatus.OK);
     }
 
@@ -177,16 +115,7 @@ public class PostService extends BaseService {
 
         for (Comment comment :
                 commentList) {
-            CommentDTO commentDTO = new CommentDTO();
-
-            commentDTO.setComment(comment.getComment());
-            commentDTO.setId(comment.getId());
-            commentDTO.setPostID(comment.getPost().getId());
-            commentDTO.setUserID(comment.getUser().getId());
-            commentDTO.setReportCount(comment.getReportCount());
-            commentDTO.setShowComment(comment.isShow());
-
-            commentDTOS.add(commentDTO);
+            commentDTOS.add(convertCommentToDTO(comment));
         }
 
 
@@ -201,6 +130,43 @@ public class PostService extends BaseService {
     public ResponseEntity deleteComment(Long commentId) {
         commentRepos.deleteById(commentId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    PostDTO convertPostToDTO(Post post) {
+        PostDTO postDTO = new PostDTO();
+        postDTO.setUserID(post.getUser().getId());
+        if (post.getUser().getUsername() != null)
+            postDTO.setUserName(post.getUser().getUsername());
+        if (post.getUser().getName() != null)
+            postDTO.setName(post.getUser().getName());
+        if (post.getDetail() != null)
+            postDTO.setDetail(post.getDetail());
+        if (post.getFuturesList() != null)
+            postDTO.setFuturesList(post.getFuturesList());
+        if (post.getCategoryList() != null)
+            postDTO.setCategoryList(post.getCategoryList());
+        if (post.getImageList() != null)
+            postDTO.setImageList(post.getImageList());
+        if (post.getReportCount() != null)
+            postDTO.setReportCount(post.getReportCount());
+        if (post.getAddress() != null)
+            postDTO.setAddress(post.getAddress());
+        if (post.getLikeCount() != null)
+            postDTO.setLikeCount(post.getLikeCount());
+        return postDTO;
+    }
+
+    CommentDTO convertCommentToDTO(Comment comment){
+        CommentDTO commentDTO=new CommentDTO();
+
+        commentDTO.setComment(comment.getComment());
+        commentDTO.setId(comment.getId());
+        commentDTO.setPostID(comment.getPost().getId());
+        commentDTO.setUserID(comment.getUser().getId());
+        commentDTO.setReportCount(comment.getReportCount());
+        commentDTO.setShowComment(comment.isShow());
+
+        return  commentDTO;
     }
 
 }
