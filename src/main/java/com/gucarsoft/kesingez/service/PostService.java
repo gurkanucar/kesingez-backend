@@ -135,6 +135,7 @@ public class PostService extends BaseService {
     PostDTO convertPostToDTO(Post post) {
         PostDTO postDTO = new PostDTO();
         postDTO.setUserID(post.getUser().getId());
+            postDTO.setId(post.getId());
         if (post.getUser().getUsername() != null)
             postDTO.setUserName(post.getUser().getUsername());
         if (post.getUser().getName() != null)

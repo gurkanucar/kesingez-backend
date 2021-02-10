@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 public class PostDTO {
+    private Long id;
     private Long userID;
     private String userName;
     private String name;
