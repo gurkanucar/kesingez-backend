@@ -67,7 +67,7 @@ public class PostService extends BaseService {
         Post post = repository.findById(id).get();
         PostDTO postDTO = new PostDTO();
         if (post.isShow()) {
-            if (post.getUser() != null && post.getUser().equals(getUser())) {
+            if (post.getUser() != null) {
                 postDTO = convertPostToDTO(post);
             }
 
